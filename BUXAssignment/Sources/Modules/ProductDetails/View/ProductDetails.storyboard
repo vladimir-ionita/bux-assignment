@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y8u-ws-ksM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Product Details View Controller-->
+        <scene sceneID="AH2-7M-iNQ">
+            <objects>
+                <viewController id="Y8u-ws-ksM" customClass="ProductDetailsViewController" customModule="BUXAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NX3-ot-9tb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0a-ip-WLZ">
+                                <rect key="frame" x="16" y="84" width="52" height="24"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
+                                <color key="textColor" red="0.089645579459999999" green="0.094982042909999995" blue="0.09771606326" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahN-9r-Ieg">
+                                <rect key="frame" x="306.5" y="84" width="52.5" height="24"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="19"/>
+                                <color key="textColor" red="0.089645579459999999" green="0.094982042909999995" blue="0.09771606326" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcu-Mp-mEk">
+                                <rect key="frame" x="16" y="111" width="43.5" height="20"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" red="0.089645579459999999" green="0.094982042909999995" blue="0.09771606326" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.03%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ws-TD-DhN">
+                                <rect key="frame" x="301" y="108" width="57.5" height="20"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94098711010000002" green="0.94111508129999999" blue="0.93610215190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Wcu-Mp-mEk" firstAttribute="leading" secondItem="NFB-yZ-gvO" secondAttribute="leading" constant="16" id="1Lw-Og-Pkc"/>
+                            <constraint firstItem="NFB-yZ-gvO" firstAttribute="trailing" secondItem="ahN-9r-Ieg" secondAttribute="trailing" constant="16" id="2Kv-55-s5f"/>
+                            <constraint firstItem="x0a-ip-WLZ" firstAttribute="leading" secondItem="NFB-yZ-gvO" secondAttribute="leading" constant="16" id="6AY-5B-ajI"/>
+                            <constraint firstItem="ahN-9r-Ieg" firstAttribute="centerY" secondItem="x0a-ip-WLZ" secondAttribute="centerY" id="iTW-i6-JgN"/>
+                            <constraint firstItem="Wcu-Mp-mEk" firstAttribute="top" secondItem="x0a-ip-WLZ" secondAttribute="bottom" constant="3" id="jpo-fv-bH0"/>
+                            <constraint firstItem="NFB-yZ-gvO" firstAttribute="trailing" secondItem="4Ws-TD-DhN" secondAttribute="trailing" constant="16" id="khM-oc-G3v"/>
+                            <constraint firstItem="x0a-ip-WLZ" firstAttribute="top" secondItem="NFB-yZ-gvO" secondAttribute="top" constant="20" id="r7t-Wg-JlC"/>
+                            <constraint firstItem="4Ws-TD-DhN" firstAttribute="top" secondItem="ahN-9r-Ieg" secondAttribute="bottom" id="yWj-iO-TxS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NFB-yZ-gvO"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="closingPriceLabel" destination="Wcu-Mp-mEk" id="eY5-AC-bYj"/>
+                        <outlet property="currentPriceLabel" destination="ahN-9r-Ieg" id="GpX-GM-Q8J"/>
+                        <outlet property="productNameLabel" destination="x0a-ip-WLZ" id="szJ-Z6-aRA"/>
+                        <outlet property="roiLabel" destination="4Ws-TD-DhN" id="ToD-MH-Zna"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rlW-Tp-UFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="K7e-Se-9Xo" customClass="ProductDetailsInitializer" customModule="BUXAssignment" customModuleProvider="target">
+                    <connections>
+                        <outlet property="productDetailsViewController" destination="Y8u-ws-ksM" id="fsM-WS-bN3"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="-130.40000000000001" y="25.637181409295355"/>
+        </scene>
+    </scenes>
+</document>

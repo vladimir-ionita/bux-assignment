@@ -1,0 +1,20 @@
+/* 
+  Localization.strings
+  BUXAssignment
+
+  Created by Vladimir Ionița on 16/11/2017.
+  Copyright © 2017 Vladimir Ionița. All rights reserved.
+*/
+
+/* HOME */
+"HOME_SCREEN_DESCRIPTION" = "Insert a product identifier for which you want to see real time updates";
+"HOME_PRODUCT_IDENTIFIER_PLACEHOLDER" = "Product Identifier";
+"HOME_GET_REAL_TIME_UPDATES_BUTTON_TITLE" = "Check Product";
+"HOME_RESOURCE_NOT_FOUND_ERROR_MESSAGE" = "Sorry, we couldn't find a product with this identifier";
+"HOME_UNAUTHORIZED_ERROR_MESSAGE" = "You are unauthorized, please re-authenticate";
+"HOME_FORBIDDEN_ERROR_MESSAGE" = "You don't have enough permissions to access this product";
+"HOME_NETWORK_ERROR_MESSAGE" = "Sorry, there is a network issue. Please check your internet connection. If it's not you, please give us few minutes to solve the problem";
+"HOME_DIALOG_BUTTON_CANCEL" = "Cancel";
+
+/* PRODUCT DETAILS */
+"PRODUCT_DETAILS_TITLE" = "Product Information";
