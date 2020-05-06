@@ -22,31 +22,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupInitialState()
     }
-    
-    
-    
-    // MARK: - Private Methods
-    
-    private func setupInitialState() {
-        customizeCheckProductButton()
-        localize()
-    }
-    
-    private func customizeCheckProductButton() {
-        checkProductButton.layer.cornerRadius = 4
-        checkProductButton.layer.borderWidth = 1.5
-        checkProductButton.layer.borderColor = UIColor.bxDarkOrange.cgColor
-        checkProductButton.setTitleColor(UIColor.bxLightOrange, for: .disabled)
-        checkProductButton.setBackgroundImage(UIImage(color: UIColor.bxGray), for: .highlighted)
-    }
-    
-    private func localize() {
-        screenDescription.text = NSLocalizedString("HOME_SCREEN_DESCRIPTION", comment: "Screen description")
-        productIdentifierTextField.placeholder = NSLocalizedString("HOME_PRODUCT_IDENTIFIER_PLACEHOLDER", comment: "Identifier placeholder")
-        
-        let updatesButtonTitle = NSLocalizedString("HOME_GET_REAL_TIME_UPDATES_BUTTON_TITLE", comment: "Get updates title")
-        checkProductButton.setTitle(updatesButtonTitle, for: .normal)
-    }
 }
 
 // MARK: - Actions
@@ -57,6 +32,30 @@ extension HomeViewController {
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
         checkProductButton.isEnabled = textField.text != nil && !textField.text!.isEmpty
+    }
+}
+
+// MARK: - Private Methods
+private extension HomeViewController {
+    func setupInitialState() {
+        customizeCheckProductButton()
+        localize()
+    }
+    
+    func customizeCheckProductButton() {
+        checkProductButton.layer.cornerRadius = 4
+        checkProductButton.layer.borderWidth = 1.5
+        checkProductButton.layer.borderColor = UIColor.bxDarkOrange.cgColor
+        checkProductButton.setTitleColor(UIColor.bxLightOrange, for: .disabled)
+        checkProductButton.setBackgroundImage(UIImage(color: UIColor.bxGray), for: .highlighted)
+    }
+    
+    func localize() {
+        screenDescription.text = NSLocalizedString("HOME_SCREEN_DESCRIPTION", comment: "Screen description")
+        productIdentifierTextField.placeholder = NSLocalizedString("HOME_PRODUCT_IDENTIFIER_PLACEHOLDER", comment: "Identifier placeholder")
+        
+        let updatesButtonTitle = NSLocalizedString("HOME_GET_REAL_TIME_UPDATES_BUTTON_TITLE", comment: "Get updates title")
+        checkProductButton.setTitle(updatesButtonTitle, for: .normal)
     }
 }
 
