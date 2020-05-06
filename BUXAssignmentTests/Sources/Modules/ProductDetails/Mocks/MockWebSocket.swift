@@ -14,17 +14,17 @@ class MockWebSocket: WebSocket {
     private (set) var writeDataMethodCalled = false
     private (set) var lastWrittenData: Data?
     
-    override func connect() {
-        connectMethodCalled = true
-    }
-    
-    override func disconnect(forceTimeout: TimeInterval?, closeCode: UInt16) {
-        disconnectMethodCalled = true
-    }
-    
-    override func write(data: Data, completion: (() -> ())?) {
-        lastWrittenData = data
-        writeDataMethodCalled = true
-    }
+//    override func connect() {
+//        connectMethodCalled = true
+//    }
+//
+//    override func disconnect(forceTimeout: TimeInterval?, closeCode: UInt16) {
+//        disconnectMethodCalled = true
+//    }
+//
+//    override func write(data: Data, completion: (() -> ())?) {
+//        lastWrittenData = data
+//        writeDataMethodCalled = true
+//    }
 }
 
