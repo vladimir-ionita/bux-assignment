@@ -15,12 +15,14 @@ class HomePresenter {
     weak var productDetailsModule: ProductDetailsModuleInput?
 }
 
+// MARK: - HomeViewOutput
 extension HomePresenter: HomeViewOutput {
     func checkProduct(productIdentifier: String) {
         interactor.fetchProduct(identifier: productIdentifier)
     }
 }
 
+// MARK: - HomeInteractorOutput
 extension HomePresenter: HomeInteractorOutput {
     func productFetchSucceed(_ product: Product) {
         let viewController = view as! UIViewController
@@ -31,9 +33,6 @@ extension HomePresenter: HomeInteractorOutput {
     func productFetchFailed(error: Error?) {
         view.showError(errorMessage: messageForError(error: error))
     }
-    
-    
-    // MARK: - Private Methods
     
     private func messageForError(error: Error?) -> String {
         if let error = error as? HTTPClientError {
