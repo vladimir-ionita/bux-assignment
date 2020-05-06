@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class ChannelEventsParserTest: XCTestCase {
@@ -15,23 +14,23 @@ class ChannelEventsParserTest: XCTestCase {
         let eventsParser = ChannelEventsParser()
         let connectionSuccceedEvent = stringMessageFromJsonDictionary(connectionSucceedMessageJson())
         let event = eventsParser.parseEventMessage(eventMessage: connectionSuccceedEvent)
-
+        
         XCTAssertTrue(event?.eventType == EventType.ConnectionSucceed)
     }
-
+    
     func testThatEventsParserCanParseAConnectionFaieldEventMessage() {
         let eventsParser = ChannelEventsParser()
         let connectionFailedMessage = stringMessageFromJsonDictionary(connectionFailedMessageJson())
         let event = eventsParser.parseEventMessage(eventMessage: connectionFailedMessage)
-
+        
         XCTAssertTrue(event?.eventType == EventType.ConnectionFailed)
     }
-
+    
     func testThatEventsParserCanParseAnPriceUpdateEventMessage() {
         let eventsParser = ChannelEventsParser()
         let priceUpdateMessage = stringMessageFromJsonDictionary(priceUpdateMessageJson())
         let event = eventsParser.parseEventMessage(eventMessage: priceUpdateMessage)
-
+        
         XCTAssertTrue(event?.eventType == EventType.PriceUpdated)
         if let eventBody = event?.eventBody {
             let priceUpdatedEventBody = eventsParser.parsePriceUpdatedEventBody(eventBody)
@@ -63,7 +62,6 @@ class ChannelEventsParserTest: XCTestCase {
 //
 //        XCTAssertNil(event)
 //    }
-    
     
     
     // MARK: - Private Message
