@@ -11,7 +11,7 @@ import UIKit
 class MockNavigationController: UINavigationController {
     private (set) var pushViewControllerCalled = false
     var pushedViewController: UIViewController?
-
+    
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         pushViewControllerCalled = true
     }

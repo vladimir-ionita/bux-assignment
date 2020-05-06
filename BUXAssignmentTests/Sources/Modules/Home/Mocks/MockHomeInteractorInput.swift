@@ -15,9 +15,7 @@ class MockHomeInteractorInput: HomeInteractorInput {
     var nextProduct: Product?
     var nextError: Error?
     
-    
     // MARK: - HomeInteractorInput
-    
     func fetchProduct(identifier: String) {
         getProductCalled = true
         

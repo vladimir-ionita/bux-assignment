@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import Foundation
 
 class MockProductService: ProductServiceProtocol {
@@ -15,9 +14,7 @@ class MockProductService: ProductServiceProtocol {
     var nextProduct: Product?
     var nextError: Error?
     
-    
     // MARK: - ProductServiceProtocol
-    
     func fetchProduct(identifier: String, completion: @escaping ProductServiceResult) {
         fetchProductCalled = true
         

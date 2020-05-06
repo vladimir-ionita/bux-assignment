@@ -7,17 +7,13 @@
 //
 
 @testable import BUXAssignment
-
 import UIKit
 
 class MockHomeViewInput: HomeViewInput {
     var output: HomeViewOutput!
-    
     private (set) var lastErrorMessage: String?
     
-    
     // MARK: - HomeViewInput
-    
     func showError(errorMessage: String) {
         lastErrorMessage = errorMessage
     }

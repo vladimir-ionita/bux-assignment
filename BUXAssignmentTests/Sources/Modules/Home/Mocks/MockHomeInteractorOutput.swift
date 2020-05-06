@@ -7,16 +7,13 @@
 //
 
 @testable import BUXAssignment
-
 import Foundation
 
 class MockHomeInteractorOutput: HomeInteractorOutput {
     private (set) var productFetchSucceedCalled = false
     private (set) var productFetchFailedCalled = false
     
-    
     // MARK: - HomeInteractorOutput
-    
     func productFetchSucceed(_ product: Product) {
         productFetchSucceedCalled = true
     }
