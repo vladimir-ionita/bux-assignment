@@ -19,8 +19,8 @@ final class ProductFactory {
         }
         
         guard
-            let currentPrice = PriceFactory.priceFromJSON(currentPriceJson),
-            let closingPrice = PriceFactory.priceFromJSON(closingPriceJson) else
+            let currentPrice = PriceFactory.makePriceFromJSON(currentPriceJson),
+            let closingPrice = PriceFactory.makePriceFromJSON(closingPriceJson) else
         {
             return nil
         }

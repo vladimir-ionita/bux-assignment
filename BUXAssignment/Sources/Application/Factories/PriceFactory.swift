@@ -7,7 +7,7 @@
 //
 
 final class PriceFactory {
-    static public func priceFromJSON(_ json: JSONDictionary) -> Price? {
+    static public func makePriceFromJSON(_ json: JSONDictionary) -> Price? {
         guard
             let currency = json["currency"] as? String,
             let decimals = json["decimals"] as? Int,
