@@ -30,6 +30,23 @@ class ProductDetailsViewController: UIViewController {
     }
 }
 
+// MARK: - ProductDetailsViewInput
+extension ProductDetailsViewController: ProductDetailsViewInput {
+    func populateProductDetails(productName: String, closingPrice: String, currentPrice: String, roi: String, roiIsPositive: Bool) {
+        productNameLabel.text = productName
+        closingPriceLabel.text = closingPrice
+        updateCurrentPriceAndRoi(currentPrice: currentPrice,
+                                 roi: roi,
+                                 roiIsPositive: roiIsPositive)
+    }
+    
+    func updateCurrentPriceAndRoi(currentPrice: String, roi: String, roiIsPositive: Bool) {
+        currentPriceLabel.text = currentPrice
+        roiLabel.text = roi
+        roiLabel.textColor = roiIsPositive ? UIColor.bxGreen : UIColor.bxRed
+    }
+}
+
 // MARK: - Private Methods
 private extension ProductDetailsViewController {
     func setupInitialState() {
@@ -52,22 +69,5 @@ private extension ProductDetailsViewController {
     
     func localize() {
         self.navigationItem.title = NSLocalizedString("PRODUCT_DETAILS_TITLE", comment: "Screen title")
-    }
-}
-
-// MARK: - ProductDetailsViewInput
-extension ProductDetailsViewController: ProductDetailsViewInput {
-    func populateProductDetails(productName: String, closingPrice: String, currentPrice: String, roi: String, roiIsPositive: Bool) {
-        productNameLabel.text = productName
-        closingPriceLabel.text = closingPrice
-        updateCurrentPriceAndRoi(currentPrice: currentPrice,
-                                 roi: roi,
-                                 roiIsPositive: roiIsPositive)
-    }
-    
-    func updateCurrentPriceAndRoi(currentPrice: String, roi: String, roiIsPositive: Bool) {
-        currentPriceLabel.text = currentPrice
-        roiLabel.text = roi
-        roiLabel.textColor = roiIsPositive ? UIColor.bxGreen : UIColor.bxRed
     }
 }
