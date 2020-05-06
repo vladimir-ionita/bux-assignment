@@ -62,10 +62,10 @@ class ChannelEventsParserTest: XCTestCase {
 //
 //        XCTAssertNil(event)
 //    }
-    
-    
-    // MARK: - Private Message
-    
+}
+
+// MARK: - Private Message
+private extension ChannelEventsParserTest {
     private func connectionSucceedMessageJson() -> JSONDictionary {
         return ["t": "connect.connected"]
     }
