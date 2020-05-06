@@ -28,6 +28,6 @@ class Stubs {
     }
     
     static func productStub() -> Product {
-        return ProductFactory.productFromJson(productJson())!
+        return ProductFactory.makeProductFromJson(productJson())!
     }
 }

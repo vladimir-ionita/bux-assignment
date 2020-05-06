@@ -30,7 +30,7 @@ class ProductService: ProductServiceProtocol {
         
         apiClient.get(url: url, headers: headers) { (jsonDictionary, error) in
             if let jsonDictionary = jsonDictionary {
-                if let product = ProductFactory.productFromJson(jsonDictionary) {
+                if let product = ProductFactory.makeProductFromJson(jsonDictionary) {
                     completion(product, nil)
                 }
             } else {

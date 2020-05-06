@@ -7,7 +7,7 @@
 //
 
 final class ProductFactory {
-    static public func productFromJson(_ json: JSONDictionary) -> Product? {
+    static public func makeProductFromJson(_ json: JSONDictionary) -> Product? {
         guard
             let identifier = json["securityId"] as? String,
             let name = json["displayName"] as? String,
