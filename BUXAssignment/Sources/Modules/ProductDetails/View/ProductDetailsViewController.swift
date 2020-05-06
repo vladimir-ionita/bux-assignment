@@ -16,9 +16,7 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet var currentPriceLabel: UILabel!
     @IBOutlet var roiLabel: UILabel!
     
-    
     // MARK: - ViewController LifeCycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
