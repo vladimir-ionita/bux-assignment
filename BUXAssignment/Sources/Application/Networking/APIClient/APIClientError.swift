@@ -9,4 +9,3 @@
 enum APIClientError: Error {
     case SerializerError
 }
-
