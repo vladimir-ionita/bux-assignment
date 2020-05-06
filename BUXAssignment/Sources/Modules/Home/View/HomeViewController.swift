@@ -57,6 +57,7 @@ private extension HomeViewController {
     }
 }
 
+// MARK: HomeViewInput
 extension HomeViewController: HomeViewInput {
     func showError(errorMessage: String) {
         self.present(alertWithMessage(message: errorMessage), animated: true, completion: nil)
@@ -75,6 +76,8 @@ extension HomeViewController: HomeViewInput {
     }
 }
 
+// MARK: - Delegates
+// MARK: UITextFieldDelegate
 extension HomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text, !text.isEmpty {
