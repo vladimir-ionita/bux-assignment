@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class PriceTest: XCTestCase {
@@ -55,5 +54,4 @@ class PriceTest: XCTestCase {
         let formattedPriceString = price.formattedString(locale: Locale(identifier: "nl_NL"))
         XCTAssertEqual(formattedPriceString, "€ 4.216,4")
     }
-    
 }

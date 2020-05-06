@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class ProductTest: XCTestCase {
@@ -24,11 +23,11 @@ class ProductTest: XCTestCase {
             && product.name == "French Exchange"
             && product.symbol == "FRANCE40")
     }
-
+    
     func testThatProductIsNilForAnEmptyJson() {
         let emptyJson: JSONDictionary = [:]
         let product = ProductFactory.makeProductFromJson(emptyJson)
-
+        
         XCTAssertNil(product)
     }
     
@@ -37,7 +36,7 @@ class ProductTest: XCTestCase {
         
         XCTAssertNil(product)
     }
-
+    
     func testThatProductCanBeCreatedFromJson() {
         let product = ProductFactory.makeProductFromJson(Stubs.productJson())
         
@@ -45,13 +44,13 @@ class ProductTest: XCTestCase {
             product?.name == "French Exchange" &&
             product?.symbol == "FRANCE40")
     }
-
+    
     func testThatRoiIsComputedCorrectly() {
         let product = ProductFactory.makeProductFromJson(Stubs.productJson())!
         
         XCTAssertEqual(product.roi, 20.0, accuracy: 0.0005)
     }
-
+    
     
     // MARK: - Private Methods
     
