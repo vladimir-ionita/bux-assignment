@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import Foundation
 
 class MockProductDetailsModuleInput: ProductDetailsModuleInput {

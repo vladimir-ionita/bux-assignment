@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class HomePresenterTest: XCTestCase {
@@ -26,7 +25,7 @@ class HomePresenterTest: XCTestCase {
         presenter.checkProduct(productIdentifier: "26608")
         XCTAssertTrue(mockInteractorInput.getProductCalled)
     }
-
+    
     func testThatWhenInteractorProvidesAProductPresenterRequestsTheRouterToOpenANewScreen() {
         presenter.view = realHomeViewController()
         
@@ -99,11 +98,11 @@ class HomePresenterTest: XCTestCase {
         testError(error: APIClientError.SerializerError)
         XCTAssertEqual(mockViewInput.lastErrorMessage, NSLocalizedString("HOME_NETWORK_ERROR_MESSAGE", comment: ""))
     }
-    
-    
-    // MARK: - Private Methods
-    
-    private func testError(error: Error) {
+}
+
+// MARK: - Private Methods
+private extension HomePresenterTest {
+    func testError(error: Error) {
         let mockInteractorInput = MockHomeInteractorInput()
         mockInteractorInput.output = presenter
         presenter.interactor = mockInteractorInput
@@ -112,7 +111,7 @@ class HomePresenterTest: XCTestCase {
         mockInteractorInput.fetchProduct(identifier: "26608")
     }
     
-    private func realHomeViewController() -> HomeViewController {
+    func realHomeViewController() -> HomeViewController {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
         UIApplication.shared.keyWindow?.rootViewController = navigationController

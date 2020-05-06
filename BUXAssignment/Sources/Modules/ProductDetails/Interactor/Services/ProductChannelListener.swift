@@ -21,6 +21,7 @@ protocol ProductChannelListenerOutput: class {
 class ProductChannelListener {
     weak var delegate: ProductChannelListenerOutput?
     private var webSocket: WebSocket!
+    private var webSocketIsConnected = false
     private let eventsParser = ChannelEventsParser()
     private var subscriptionProductIdentifier: String?
     private struct Constants {
@@ -38,14 +39,30 @@ class ProductChannelListener {
     }
     
     deinit {
-        webSocket!.disconnect(forceTimeout: 0)
+        webSocket!.disconnect()
         webSocket!.delegate = nil
     }
+}
+
+// MARK: - ProductChannelListenerInput
+extension ProductChannelListener: ProductChannelListenerInput {
+    func subscribeToChannel(productIdentifier: String) {
+        if webSocketIsConnected {
+            sendSubscribeMessage(productIdentifier: productIdentifier)
+        } else {
+            subscriptionProductIdentifier = productIdentifier
+            webSocket.connect()
+        }
+    }
     
-    
-    // MARK: - Private Methods
-    
-    private func request() -> URLRequest {
+    func unsubscribeFromChannel(productIdentifier: String) {
+        sendUnsubscribeMessage(productIdentifier: productIdentifier)
+    }
+}
+
+// MARK: - Private Methods
+private extension ProductChannelListener {
+    func request() -> URLRequest {
         var request = URLRequest(url: URL(string: Constants.channelSubscriptionEndpoint)!)
         
         let headers = [
@@ -60,43 +77,52 @@ class ProductChannelListener {
         return request
     }
     
-    private func sendSubscribeMessage(productIdentifier: String) {
+    func sendSubscribeMessage(productIdentifier: String) {
         let message = ProductChannelMessagesFactory.subscribeMessage(identifier: productIdentifier)
         webSocket.write(data: message)
     }
     
-    private func sendUnsubscribeMessage(productIdentifier: String) {
+    func sendUnsubscribeMessage(productIdentifier: String) {
         let message = ProductChannelMessagesFactory.unsubscribeMessage(identifier: productIdentifier)
         webSocket.write(data: message)
     }
 }
 
-extension ProductChannelListener: ProductChannelListenerInput {
-    func subscribeToChannel(productIdentifier: String) {
-        if webSocket.isConnected {
-            sendSubscribeMessage(productIdentifier: productIdentifier)
-        } else {
-            subscriptionProductIdentifier = productIdentifier
-            webSocket.connect()
+// MARK: - Delegates
+// MARK: WebSocketDelegate
+extension ProductChannelListener: WebSocketDelegate {
+    func didReceive(event: WebSocketEvent, client: WebSocket) {
+        switch event {
+        case .connected(_):
+            webSocketIsConnected = true
+        case .disconnected(let reason, let code):
+            print("Disconnected.\nCode: %@\nReason: %@", code, reason)
+            webSocketIsConnected = false
+        case .text(let string):
+            print("Received text: \(string)")
+            websocketDidReceiveMessage(message: string)
+        case .binary(let data):
+            print("Received data: \(data.count)")
+        case .ping(_):
+            break
+        case .pong(_):
+            break
+        case .viabilityChanged(_):
+            break
+        case .reconnectSuggested(_):
+            break
+        case .cancelled:
+            webSocketIsConnected = false
+        case .error(let error):
+            if let error = error {
+                print("Connetion error: %@", error)
+            }
+            webSocketIsConnected = false
         }
     }
     
-    func unsubscribeFromChannel(productIdentifier: String) {
-        sendUnsubscribeMessage(productIdentifier: productIdentifier)
-    }
-}
-
-extension ProductChannelListener: WebSocketDelegate {
-    func websocketDidConnect(socket: WebSocketClient) {
-//        reconnectedSuccessfully()
-    }
-    
-    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-//        reconnect()?
-    }
-    
-    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        guard let event = eventsParser.parseEventMessage(eventMessage: text) else {
+    private func websocketDidReceiveMessage(message: String) {
+        guard let event = eventsParser.parseEventMessage(eventMessage: message) else {
             return
         }
         
@@ -107,7 +133,6 @@ extension ProductChannelListener: WebSocketDelegate {
             }
         case .ConnectionFailed:
             delegate?.didEncounterNetworkIssues()
-//            reconnect()
         case .PriceUpdated:
             if let eventBody = event.eventBody {
                 if let quoteUpdatedEventBody = eventsParser.parsePriceUpdatedEventBody(eventBody) {
@@ -115,9 +140,5 @@ extension ProductChannelListener: WebSocketDelegate {
                 }
             }
         }
-    }
-    
-    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        
     }
 }

@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class ProductTest: XCTestCase {
@@ -24,38 +23,38 @@ class ProductTest: XCTestCase {
             && product.name == "French Exchange"
             && product.symbol == "FRANCE40")
     }
-
+    
     func testThatProductIsNilForAnEmptyJson() {
         let emptyJson: JSONDictionary = [:]
-        let product = ProductFactory.productFromJson(emptyJson)
-
+        let product = ProductFactory.makeProductFromJson(emptyJson)
+        
         XCTAssertNil(product)
     }
     
     func testThatProductIsNilForMalformatedPriceJson() {
-        let product = ProductFactory.productFromJson(productJsonWithMalformatedPrice())
+        let product = ProductFactory.makeProductFromJson(productJsonWithMalformatedPrice())
         
         XCTAssertNil(product)
     }
-
+    
     func testThatProductCanBeCreatedFromJson() {
-        let product = ProductFactory.productFromJson(Stubs.productJson())
+        let product = ProductFactory.makeProductFromJson(Stubs.productJson())
         
         XCTAssertTrue(product?.identifier == "26608" &&
             product?.name == "French Exchange" &&
             product?.symbol == "FRANCE40")
     }
-
+    
     func testThatRoiIsComputedCorrectly() {
-        let product = ProductFactory.productFromJson(Stubs.productJson())!
+        let product = ProductFactory.makeProductFromJson(Stubs.productJson())!
         
         XCTAssertEqual(product.roi, 20.0, accuracy: 0.0005)
     }
+}
 
-    
-    // MARK: - Private Methods
-    
-    private func productJsonWithMalformatedPrice() -> JSONDictionary {
+// MARK: - Private Methods
+private extension ProductTest {
+    func productJsonWithMalformatedPrice() -> JSONDictionary {
         return [
             "symbol": "FRANCE40",
             "securityId": "26608",

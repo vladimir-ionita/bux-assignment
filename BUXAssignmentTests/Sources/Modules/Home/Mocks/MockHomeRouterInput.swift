@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import UIKit
 
 class MockHomeRouterInput: HomeRouterInput {
@@ -21,7 +20,6 @@ class MockHomeRouterInput: HomeRouterInput {
     var mockProductDetailsModule: ProductDetailsModuleInput?
     
     // MARK: - HomeRouterInput
-    
     func showProductDetails(sourceController: UIViewController) -> ProductDetailsModuleInput {
         showProductDetailsCalled = true
         mockProductDetailsModule = MockProductDetailsModuleInput()

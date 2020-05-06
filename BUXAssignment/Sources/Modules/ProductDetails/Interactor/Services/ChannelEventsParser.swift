@@ -51,11 +51,11 @@ class ChannelEventsParser {
         return PriceUpdatedEventBody(identifier: identifier,
                                      currentPrice: currentPrice)
     }
-    
-    
-    // MARK: - Private Methods
-    
-    private func jsonDictionaryFromJsonString(_ jsonString: String) -> JSONDictionary? {
+}
+
+// MARK: - Private Methods
+private extension ChannelEventsParser {
+    func jsonDictionaryFromJsonString(_ jsonString: String) -> JSONDictionary? {
         guard
             let jsonData = jsonString.data(using: .utf8),
             let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: []),

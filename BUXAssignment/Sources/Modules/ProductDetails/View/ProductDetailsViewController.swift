@@ -16,9 +16,7 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet var currentPriceLabel: UILabel!
     @IBOutlet var roiLabel: UILabel!
     
-    
     // MARK: - ViewController LifeCycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,34 +28,9 @@ class ProductDetailsViewController: UIViewController {
         super.viewWillDisappear(animated)
         output.viewWillDisappear()
     }
-    
-    
-    
-    // MARK: - Private Methods
-    
-    private func setupInitialState() {
-        customizeNavigationBarTitle()
-        customizeNavigationBarBackButton()
-        
-        localize()
-    }
-    
-    private func customizeNavigationBarTitle() {
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor : UIColor(withRGBWhite: 87, alpha: 199),
-            NSAttributedStringKey.font : UIFont(name: "Montserrat-Regular", size: 20)!
-        ]
-    }
-    
-    private func customizeNavigationBarBackButton() {
-        self.navigationController?.navigationBar.tintColor = UIColor(withRGBWhite: 87, alpha: 199)
-    }
-    
-    private func localize() {
-        self.navigationItem.title = NSLocalizedString("PRODUCT_DETAILS_TITLE", comment: "Screen title")
-    }
 }
 
+// MARK: - ProductDetailsViewInput
 extension ProductDetailsViewController: ProductDetailsViewInput {
     func populateProductDetails(productName: String, closingPrice: String, currentPrice: String, roi: String, roiIsPositive: Bool) {
         productNameLabel.text = productName
@@ -71,5 +44,30 @@ extension ProductDetailsViewController: ProductDetailsViewInput {
         currentPriceLabel.text = currentPrice
         roiLabel.text = roi
         roiLabel.textColor = roiIsPositive ? UIColor.bxGreen : UIColor.bxRed
+    }
+}
+
+// MARK: - Private Methods
+private extension ProductDetailsViewController {
+    func setupInitialState() {
+        customizeNavigationBarTitle()
+        customizeNavigationBarBackButton()
+        
+        localize()
+    }
+    
+    func customizeNavigationBarTitle() {
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor(withRGBWhite: 87, alpha: 199),
+            NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 20)!
+        ]
+    }
+    
+    func customizeNavigationBarBackButton() {
+        self.navigationController?.navigationBar.tintColor = UIColor(withRGBWhite: 87, alpha: 199)
+    }
+    
+    func localize() {
+        self.navigationItem.title = NSLocalizedString("PRODUCT_DETAILS_TITLE", comment: "Screen title")
     }
 }

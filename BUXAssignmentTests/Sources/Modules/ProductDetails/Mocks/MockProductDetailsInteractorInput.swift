@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import UIKit
 
 class MockProductDetailsInteractorInput: ProductDetailsInteractorInput {

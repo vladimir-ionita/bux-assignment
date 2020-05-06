@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class APIClientTest: XCTestCase {
@@ -21,7 +20,7 @@ class APIClientTest: XCTestCase {
         apiClient.get(url: URL(string: urlString)!, headers: [headerField : headerValue]) { (_, _) in }
         
         XCTAssertTrue(httpClient.lastRequest?.url?.absoluteString == urlString
-                && httpClient.lastRequest?.value(forHTTPHeaderField: headerField) == headerValue)
+            && httpClient.lastRequest?.value(forHTTPHeaderField: headerField) == headerValue)
     }
     
     func testAPIClientReturnSerializedJson() {

@@ -29,11 +29,11 @@ class APIClient: APIClientProtocol {
             }
         }
     }
-    
-    
-    // MARK: - Private Methods
-    
-    private func request(url: URL, headers: [String : String]) -> URLRequest {
+}
+
+// MARK: - Private Methods
+private extension APIClient {
+    func request(url: URL, headers: [String : String]) -> URLRequest {
         var request = URLRequest(url: url)
         for (key, value) in headers {
             request.addValue(value, forHTTPHeaderField: key)
@@ -42,7 +42,7 @@ class APIClient: APIClientProtocol {
         return request
     }
     
-    private func jsonDictionary(data: Data) -> JSONDictionary? {
+    func jsonDictionary(data: Data) -> JSONDictionary? {
         if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) {
             return jsonObject as? JSONDictionary
         }

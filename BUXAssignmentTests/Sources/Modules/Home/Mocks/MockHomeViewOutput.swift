@@ -14,9 +14,7 @@ class MockHomeViewOutput: HomeViewOutput {
     var invalidIdentifier = false
     private (set) var checkProductMethodCalled = false
     
-    
     // MARK: - HomeViewOutput
-    
     func checkProduct(productIdentifier: String) {
         checkProductMethodCalled = true
         

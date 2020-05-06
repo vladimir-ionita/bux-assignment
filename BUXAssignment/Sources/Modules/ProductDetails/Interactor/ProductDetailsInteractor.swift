@@ -19,6 +19,7 @@ class ProductDetailsInteractor {
     }
 }
 
+// MARK: - ProductDetailsInteractorInput
 extension ProductDetailsInteractor: ProductDetailsInteractorInput {
     func subscribeToRealTimeFeedChannel(for productIdentifier: String) {
         self.productIdentifier = productIdentifier
@@ -31,6 +32,7 @@ extension ProductDetailsInteractor: ProductDetailsInteractorInput {
     }
 }
 
+// MARK: - ProductChannelListenerOutput
 extension ProductDetailsInteractor: ProductChannelListenerOutput {
     func didReceiveQuoteUpdate(_ priceUpdatedEventBody: PriceUpdatedEventBody) {
         guard let identifier = productIdentifier, !identifier.isEmpty else {

@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class PriceTest: XCTestCase {
@@ -21,7 +20,7 @@ class PriceTest: XCTestCase {
     
     func testThatPriceIsNilForEmptyJson() {
         let emptyJson: JSONDictionary = [:]
-        let price = PriceFactory.priceFromJSON(emptyJson)
+        let price = PriceFactory.makePriceFromJSON(emptyJson)
         
         XCTAssertNil(price)
     }
@@ -32,7 +31,7 @@ class PriceTest: XCTestCase {
             "decimals": 1,
             "amount": "Ten"
         ]
-        let price = PriceFactory.priceFromJSON(priceJson)
+        let price = PriceFactory.makePriceFromJSON(priceJson)
         
         XCTAssertNil(price)
     }
@@ -43,7 +42,7 @@ class PriceTest: XCTestCase {
             "decimals": 1,
             "amount": "1.2"
         ]
-        let price = PriceFactory.priceFromJSON(priceJson)
+        let price = PriceFactory.makePriceFromJSON(priceJson)
         
         XCTAssertTrue(price?.currency == "EUR"
             && price?.decimals == 1
@@ -55,5 +54,4 @@ class PriceTest: XCTestCase {
         let formattedPriceString = price.formattedString(locale: Locale(identifier: "nl_NL"))
         XCTAssertEqual(formattedPriceString, "€ 4.216,4")
     }
-    
 }

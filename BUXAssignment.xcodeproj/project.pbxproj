@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C37183F24970C3E00437520 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A5E1BF1FB8EAD3002996D2 /* Starscream.framework */; };
+		9C37184024970C3E00437520 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5A5E1BF1FB8EAD3002996D2 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F500E57B1FBDCC54009F4900 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500E57A1FBDCC54009F4900 /* Stubs.swift */; };
 		F500E57F1FBDCFEF009F4900 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500E57D1FBDCFEF009F4900 /* Price.swift */; };
 		F500E5801FBDCFEF009F4900 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F500E57E1FBDCFEF009F4900 /* Product.swift */; };
@@ -53,8 +55,6 @@
 		F583820A1FBBC6D200143E34 /* MockProductDetailsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58382091FBBC6D200143E34 /* MockProductDetailsViewInput.swift */; };
 		F583820C1FBBCB4B00143E34 /* ProductDetailsViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583820B1FBBCB4B00143E34 /* ProductDetailsViewControllerTest.swift */; };
 		F58382121FBC342500143E34 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58382111FBC342500143E34 /* MockNavigationController.swift */; };
-		F5A5E1C01FB8EAD3002996D2 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A5E1BF1FB8EAD3002996D2 /* Starscream.framework */; };
-		F5A5E1C71FB8EE12002996D2 /* Starscream.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5A5E1BF1FB8EAD3002996D2 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5B4919C1FBD07E800B60594 /* MockProductChannelListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B4919B1FBD07E800B60594 /* MockProductChannelListener.swift */; };
 		F5B491A11FBD094E00B60594 /* ProductChannelListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B491A01FBD094E00B60594 /* ProductChannelListener.swift */; };
 		F5B491A31FBD0CD800B60594 /* ProductChannelListenerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B491A21FBD0CD800B60594 /* ProductChannelListenerTest.swift */; };
@@ -106,14 +106,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F5A5E1C61FB8EE09002996D2 /* CopyFiles */ = {
+		9C37184124970C3E00437520 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F5A5E1C71FB8EE12002996D2 /* Starscream.framework in CopyFiles */,
+				9C37184024970C3E00437520 /* Starscream.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -215,7 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5A5E1C01FB8EAD3002996D2 /* Starscream.framework in Frameworks */,
+				9C37183F24970C3E00437520 /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,7 +671,8 @@
 				F5AD8AD61FB0F76300F71B80 /* Sources */,
 				F5AD8AD71FB0F76300F71B80 /* Frameworks */,
 				F5AD8AD81FB0F76300F71B80 /* Resources */,
-				F5A5E1C61FB8EE09002996D2 /* CopyFiles */,
+				9C37183E2497093E00437520 /* ShellScript */,
+				9C37184124970C3E00437520 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -762,6 +764,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9C37183E2497093E00437520 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
+			);
+			outputFileListPaths = (
+				"",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F5AD8AD61FB0F76300F71B80 /* Sources */ = {
@@ -980,7 +1004,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -995,10 +1020,13 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BUXAssignment/Resources/SupportingFiles/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bux.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1013,10 +1041,13 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BUXAssignment/Resources/SupportingFiles/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bux.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1032,10 +1063,14 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = BUXAssignmentTests/SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bux.ios.BUXAssignmentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BUXAssignment.app/BUXAssignment";
 			};
@@ -1052,10 +1087,14 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = BUXAssignmentTests/SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bux.ios.BUXAssignmentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BUXAssignment.app/BUXAssignment";
 			};

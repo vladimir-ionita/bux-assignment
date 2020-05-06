@@ -35,6 +35,7 @@ class ProductDetailsPresenter {
     }
 }
 
+// MARK: - ProductDetailsModuleInput
 extension ProductDetailsPresenter: ProductDetailsModuleInput {
     func configureModule(product: Product) {
         self.product = product
@@ -42,6 +43,7 @@ extension ProductDetailsPresenter: ProductDetailsModuleInput {
     }
 }
 
+// MARK: - ProductDetailsViewOutput
 extension ProductDetailsPresenter: ProductDetailsViewOutput {
     func viewIsReady() {
         viewIsReadySemaphore?.leave()
@@ -52,6 +54,7 @@ extension ProductDetailsPresenter: ProductDetailsViewOutput {
     }
 }
 
+// MARK: - ProductDetailsInteractorOutput
 extension ProductDetailsPresenter: ProductDetailsInteractorOutput {
     func didReceivePriceUpdate(_ priceDescription: PriceUpdatedEventBody) {
         throttler.throttle { [weak self] in
@@ -69,6 +72,6 @@ extension ProductDetailsPresenter: ProductDetailsInteractorOutput {
     }
     
     func didEncounterNetworkIssues() {
-        
+        // TODO: Implement method
     }
 }

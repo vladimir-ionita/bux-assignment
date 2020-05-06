@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class HomeViewControllerTest: XCTestCase {
@@ -19,7 +18,7 @@ class HomeViewControllerTest: XCTestCase {
         
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-        viewController = navigationController.topViewController as! HomeViewController
+        viewController = (navigationController.topViewController as! HomeViewController)
         viewController.preloadView()
         
         mockViewOutput = MockHomeViewOutput()

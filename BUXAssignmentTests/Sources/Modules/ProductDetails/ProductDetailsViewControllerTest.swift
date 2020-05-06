@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class ProductDetailsViewControllerTest: XCTestCase {
@@ -17,7 +16,7 @@ class ProductDetailsViewControllerTest: XCTestCase {
         super.setUp()
         
         let storyboard = UIStoryboard(name: "ProductDetails", bundle: nil)
-        viewController = storyboard.instantiateInitialViewController() as! ProductDetailsViewController
+        viewController = (storyboard.instantiateInitialViewController() as! ProductDetailsViewController)
         viewController.preloadView()
         
         UIApplication.shared.keyWindow!.rootViewController = viewController

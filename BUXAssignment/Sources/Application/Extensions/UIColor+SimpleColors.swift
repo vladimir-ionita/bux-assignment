@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIColor {
-    
     static let bxLightOrange = UIColor(withRGBRed: 251, green: 115, blue: 61, alpha: 10)
     static let bxDarkOrange = UIColor(withRGBRed: 251, green: 115, blue: 61, alpha: 100)
     static let bxGray = UIColor(withRGBWhite: 193, alpha: 30)

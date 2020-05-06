@@ -7,7 +7,7 @@
 //
 
 final class ProductFactory {
-    static public func productFromJson(_ json: JSONDictionary) -> Product? {
+    static public func makeProductFromJson(_ json: JSONDictionary) -> Product? {
         guard
             let identifier = json["securityId"] as? String,
             let name = json["displayName"] as? String,
@@ -19,8 +19,8 @@ final class ProductFactory {
         }
         
         guard
-            let currentPrice = PriceFactory.priceFromJSON(currentPriceJson),
-            let closingPrice = PriceFactory.priceFromJSON(closingPriceJson) else
+            let currentPrice = PriceFactory.makePriceFromJSON(currentPriceJson),
+            let closingPrice = PriceFactory.makePriceFromJSON(closingPriceJson) else
         {
             return nil
         }

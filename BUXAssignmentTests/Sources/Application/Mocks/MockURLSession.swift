@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import Foundation
 
 class MockURLSession: URLSessionProtocol {
@@ -16,12 +15,12 @@ class MockURLSession: URLSessionProtocol {
     var nextData: Data?
     var nextResponse: URLResponse?
     var nextError: Error?
-
+    
     func dataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
         self.lastRequest = request
         completionHandler(nextData, nextResponse, nextError)
         
         return nextDataTask
-
+        
     }
 }

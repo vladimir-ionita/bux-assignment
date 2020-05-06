@@ -15,9 +15,15 @@ class HomeViewController: UIViewController {
     @IBOutlet var productIdentifierTextField: UITextField!
     @IBOutlet var checkProductButton: UIButton!
     
-    
-    // MARK: - Actions
-    
+    // MARK: - ViewController Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupInitialState()
+    }
+}
+
+// MARK: - Actions
+extension HomeViewController {
     @IBAction func checkProductButtonTapped() {
         output.checkProduct(productIdentifier: productIdentifierTextField.text!)
     }
@@ -25,26 +31,16 @@ class HomeViewController: UIViewController {
     @IBAction func textFieldDidChange(_ textField: UITextField) {
         checkProductButton.isEnabled = textField.text != nil && !textField.text!.isEmpty
     }
-    
-    
-    
-    // MARK: - ViewController Life Cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupInitialState()
-    }
-    
-    
-    
-    // MARK: - Private Methods
-    
-    private func setupInitialState() {
+}
+
+// MARK: - Private Methods
+private extension HomeViewController {
+    func setupInitialState() {
         customizeCheckProductButton()
         localize()
     }
     
-    private func customizeCheckProductButton() {
+    func customizeCheckProductButton() {
         checkProductButton.layer.cornerRadius = 4
         checkProductButton.layer.borderWidth = 1.5
         checkProductButton.layer.borderColor = UIColor.bxDarkOrange.cgColor
@@ -52,7 +48,7 @@ class HomeViewController: UIViewController {
         checkProductButton.setBackgroundImage(UIImage(color: UIColor.bxGray), for: .highlighted)
     }
     
-    private func localize() {
+    func localize() {
         screenDescription.text = NSLocalizedString("HOME_SCREEN_DESCRIPTION", comment: "Screen description")
         productIdentifierTextField.placeholder = NSLocalizedString("HOME_PRODUCT_IDENTIFIER_PLACEHOLDER", comment: "Identifier placeholder")
         
@@ -61,6 +57,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: HomeViewInput
 extension HomeViewController: HomeViewInput {
     func showError(errorMessage: String) {
         self.present(alertWithMessage(message: errorMessage), animated: true, completion: nil)
@@ -79,6 +76,8 @@ extension HomeViewController: HomeViewInput {
     }
 }
 
+// MARK: - Delegates
+// MARK: UITextFieldDelegate
 extension HomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text, !text.isEmpty {
