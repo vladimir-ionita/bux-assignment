@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class HomePresenterTest: XCTestCase {
@@ -26,7 +25,7 @@ class HomePresenterTest: XCTestCase {
         presenter.checkProduct(productIdentifier: "26608")
         XCTAssertTrue(mockInteractorInput.getProductCalled)
     }
-
+    
     func testThatWhenInteractorProvidesAProductPresenterRequestsTheRouterToOpenANewScreen() {
         presenter.view = realHomeViewController()
         
