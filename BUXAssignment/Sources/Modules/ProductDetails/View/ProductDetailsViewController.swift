@@ -55,6 +55,7 @@ private extension ProductDetailsViewController {
     }
 }
 
+// MARK: - ProductDetailsViewInput
 extension ProductDetailsViewController: ProductDetailsViewInput {
     func populateProductDetails(productName: String, closingPrice: String, currentPrice: String, roi: String, roiIsPositive: Bool) {
         productNameLabel.text = productName
