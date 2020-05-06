@@ -15,9 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var productIdentifierTextField: UITextField!
     @IBOutlet var checkProductButton: UIButton!
     
-    
     // MARK: - ViewController Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupInitialState()
