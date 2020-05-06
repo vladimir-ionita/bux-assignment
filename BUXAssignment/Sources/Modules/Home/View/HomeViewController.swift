@@ -16,18 +16,6 @@ class HomeViewController: UIViewController {
     @IBOutlet var checkProductButton: UIButton!
     
     
-    // MARK: - Actions
-    
-    @IBAction func checkProductButtonTapped() {
-        output.checkProduct(productIdentifier: productIdentifierTextField.text!)
-    }
-    
-    @IBAction func textFieldDidChange(_ textField: UITextField) {
-        checkProductButton.isEnabled = textField.text != nil && !textField.text!.isEmpty
-    }
-    
-    
-    
     // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
@@ -58,6 +46,17 @@ class HomeViewController: UIViewController {
         
         let updatesButtonTitle = NSLocalizedString("HOME_GET_REAL_TIME_UPDATES_BUTTON_TITLE", comment: "Get updates title")
         checkProductButton.setTitle(updatesButtonTitle, for: .normal)
+    }
+}
+
+// MARK: - Actions
+extension HomeViewController {
+    @IBAction func checkProductButtonTapped() {
+        output.checkProduct(productIdentifier: productIdentifierTextField.text!)
+    }
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        checkProductButton.isEnabled = textField.text != nil && !textField.text!.isEmpty
     }
 }
 
