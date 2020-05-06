@@ -7,7 +7,6 @@
 //
 
 @testable import BUXAssignment
-
 import XCTest
 
 class HomeInteractorTest: XCTestCase {
