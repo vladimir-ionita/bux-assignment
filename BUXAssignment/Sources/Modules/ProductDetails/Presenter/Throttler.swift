@@ -32,6 +32,7 @@ class Throttler {
     }
 }
 
+// MARK: - Private Methods
 private extension Date {
     static func second(from referenceDate: Date) -> Int {
         return Int(Date().timeIntervalSince(referenceDate).rounded())
