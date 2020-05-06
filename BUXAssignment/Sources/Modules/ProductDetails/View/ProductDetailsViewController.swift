@@ -30,30 +30,29 @@ class ProductDetailsViewController: UIViewController {
         super.viewWillDisappear(animated)
         output.viewWillDisappear()
     }
-    
-    
-    
-    // MARK: - Private Methods
-    
-    private func setupInitialState() {
+}
+
+// MARK: - Private Methods
+private extension ProductDetailsViewController {
+    func setupInitialState() {
         customizeNavigationBarTitle()
         customizeNavigationBarBackButton()
         
         localize()
     }
     
-    private func customizeNavigationBarTitle() {
+    func customizeNavigationBarTitle() {
         self.navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor : UIColor(withRGBWhite: 87, alpha: 199),
             NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 20)!
         ]
     }
     
-    private func customizeNavigationBarBackButton() {
+    func customizeNavigationBarBackButton() {
         self.navigationController?.navigationBar.tintColor = UIColor(withRGBWhite: 87, alpha: 199)
     }
     
-    private func localize() {
+    func localize() {
         self.navigationItem.title = NSLocalizedString("PRODUCT_DETAILS_TITLE", comment: "Screen title")
     }
 }
