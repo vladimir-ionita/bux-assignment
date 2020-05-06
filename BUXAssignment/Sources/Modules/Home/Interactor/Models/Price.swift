@@ -27,7 +27,7 @@ extension Price {
         
         type(of: self).formatter.maximumFractionDigits = decimals
         type(of: self).formatter.currencyCode = currency
-
+        
         return type(of: self).formatter.string(from: NSNumber(value: amount))
     }
 }
