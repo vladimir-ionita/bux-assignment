@@ -50,11 +50,11 @@ class ProductTest: XCTestCase {
         
         XCTAssertEqual(product.roi, 20.0, accuracy: 0.0005)
     }
-    
-    
-    // MARK: - Private Methods
-    
-    private func productJsonWithMalformatedPrice() -> JSONDictionary {
+}
+
+// MARK: - Private Methods
+private extension ProductTest {
+    func productJsonWithMalformatedPrice() -> JSONDictionary {
         return [
             "symbol": "FRANCE40",
             "securityId": "26608",
