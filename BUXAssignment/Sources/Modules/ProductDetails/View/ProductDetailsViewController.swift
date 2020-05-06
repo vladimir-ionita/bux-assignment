@@ -44,8 +44,8 @@ class ProductDetailsViewController: UIViewController {
     
     private func customizeNavigationBarTitle() {
         self.navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor : UIColor(withRGBWhite: 87, alpha: 199),
-            NSAttributedStringKey.font : UIFont(name: "Montserrat-Regular", size: 20)!
+            NSAttributedString.Key.foregroundColor : UIColor(withRGBWhite: 87, alpha: 199),
+            NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 20)!
         ]
     }
     
